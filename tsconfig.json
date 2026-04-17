@@ -42,5 +42,8 @@
     "skipLibCheck": true,
 
     "moduleResolution": "nodenext",
+
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   }
 }
