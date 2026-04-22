@@ -1,12 +1,12 @@
 import { type FastifyInstance } from "fastify";
 import { type FromSchema } from "json-schema-to-ts";
+import authenticate from "../hooks/authenticate.ts";
 
 const schema = {
   type: "object",
-  required: ["content", "user_id"],
+  required: ["content"],
   properties: {
     content: { type: "string" },
-    user_id: { type: "string", format: "uuid" },
   },
 } as const;
 
@@ -28,15 +28,16 @@ export default async function (app: FastifyInstance) {
 
   app.post<{ Body: Body }>(
     "/messages",
-    { schema: { body: schema } },
+    { preHandler: authenticate, schema: { body: schema } },
     async (request, reply) => {
       const client = await app.pg.connect();
-      const body = request.body;
+      const content = request.body.content; // from body
+      const userId = request.user.id; // from jwt body
 
       try {
         const result = await client.query(
           "INSERT INTO messages (content, user_id) VALUES ($1, $2) RETURNING *",
-          [body.content, body.user_id],
+          [content, userId],
         );
 
         reply.status(201).send(result.rows[0]);

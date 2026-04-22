@@ -7,7 +7,8 @@ declare module "fastify" {
     config: {
       PORT: number;
       HOST: string;
-      DATABASE_URL?: string;
+      DATABASE_URL: string;
+      JWT_SECRET: string;
     };
   }
 }
@@ -27,6 +28,10 @@ const schema = {
     DATABASE_URL: {
       type: "string",
       default: process.env.DATABASE_URL,
+    },
+    JWT_SECRET: {
+      type: "string",
+      default: process.env.JWT_SECRET,
     },
   },
 };
