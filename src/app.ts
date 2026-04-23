@@ -1,11 +1,11 @@
 import Fastify from "fastify";
-//PLugin
-import healthRoute from "./routes/health.js";
-import usersRoute from "./routes/users.ts";
-import messagesRoute from "./routes/messages.ts";
-import chatRoute from "./routes/chat.ts";
-import authRoute from "./routes/auth.ts";
 // Routes
+import healthRoute from "./modules/health/health.routes.ts";
+import chatRoute from "./modules/chat/chat.routes.ts";
+import usersRoute from "./modules/users/users.routes.ts";
+import messagesRoute from "./modules/messages/messages.routes.ts";
+import authRoute from "./modules/auth/auth.routes.ts";
+//PLugin
 import envPlugin from "./config/env.js";
 import postgresPlugin from "./plugins/postgres.js";
 import jwtPlugin from "./plugins/jwt.ts";
