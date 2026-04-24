@@ -1,11 +1,13 @@
 import { type FastifyInstance } from "fastify";
-import authHandler from "./auth.handler.ts";
-import { type AuthBody, authSchema } from "./auth.schema.ts";
+import { loginHandler, signupHandler } from "./auth.handler.ts";
+import { type LoginBody, loginSchema, type SignupBody } from "./auth.schema.ts";
 
 export default async function (app: FastifyInstance) {
-  app.post<{ Body: AuthBody }>(
+  app.post<{ Body: LoginBody }>(
     "/login",
-    { schema: { body: authSchema } },
-    authHandler(app),
+    { schema: { body: loginSchema } },
+    loginHandler(app),
   );
+
+  app.post<{ Body: SignupBody }>("signup", signupHandler(app));
 }
