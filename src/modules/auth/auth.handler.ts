@@ -58,8 +58,9 @@ function signupHandler(app: FastifyInstance) {
         "INSERT INTO users (username, password) VALUES ($1, $2)",
         [body.username, hash],
       );
-    } catch {
-      reply.send({ error: "Nope" });
+      reply.status(201);
+    } catch (error) {
+      reply.send({ error });
     }
   };
 }

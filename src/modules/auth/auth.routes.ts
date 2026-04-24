@@ -9,5 +9,5 @@ export default async function (app: FastifyInstance) {
     loginHandler(app),
   );
 
-  app.post<{ Body: SignupBody }>("signup", signupHandler(app));
+  app.post<{ Body: SignupBody }>("/signup", signupHandler(app));
 }

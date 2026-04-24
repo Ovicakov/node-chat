@@ -5,7 +5,7 @@ import chatRoute from "./modules/chat/chat.routes.ts";
 import usersRoute from "./modules/users/users.routes.ts";
 import messagesRoute from "./modules/messages/messages.routes.ts";
 import authRoute from "./modules/auth/auth.routes.ts";
-//PLugin
+// Plugins
 import envPlugin from "./config/env.js";
 import postgresPlugin from "./plugins/postgres.js";
 import jwtPlugin from "./plugins/jwt.ts";
@@ -22,7 +22,7 @@ const app = Fastify({
   },
 });
 
-// PLUGIN
+// PLUGINS
 app.register(envPlugin);
 app.after(() => {
   app.register(postgresPlugin);

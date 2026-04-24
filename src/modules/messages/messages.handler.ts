@@ -32,8 +32,7 @@ function messagesPostHandler(app: FastifyInstance) {
       );
 
       reply.status(201).send(result.rows[0]);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
       reply.status(500).send({ error: "Failed to create message" });
     } finally {
       client.release();
