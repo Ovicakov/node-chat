@@ -50,7 +50,7 @@ function signupHandler(app: FastifyInstance) {
   ) => {
     const client = await app.pg.connect();
     const body = request.body;
-    const saltRounds = 5;
+    const saltRounds = 5; // 10-12 in production
 
     try {
       const hash = await bcrypt.hash(body.password, saltRounds);

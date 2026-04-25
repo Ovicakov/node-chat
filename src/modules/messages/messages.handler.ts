@@ -8,7 +8,7 @@ function messagesGetHandler(app: FastifyInstance) {
     try {
       const result = await client.query("SELECT * FROM messages");
       reply.send(result.rows);
-    } catch (_) {
+    } catch {
       reply.status(500).send({ error: "Failed to fetch messages" });
     } finally {
       client.release();
@@ -32,7 +32,7 @@ function messagesPostHandler(app: FastifyInstance) {
       );
 
       reply.status(201).send(result.rows[0]);
-    } catch (error) {
+    } catch {
       reply.status(500).send({ error: "Failed to create message" });
     } finally {
       client.release();
