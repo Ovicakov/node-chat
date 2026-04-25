@@ -17,13 +17,13 @@ export default function usersHandler(app: FastifyInstance) {
       reply.status(201).send(result.rows[0]);
     } catch (error: any) {
       if (error.code === "23505") {
-        // 23505 est le code d'erreur PostgreSQL pour une violation de contrainte d'unicité
+        // 23505 is the PostgreSQL error code for a unique constraint violation
         reply.status(409).send({ error: "Username already exists" });
       } else if (error.code === "23514") {
-        // 23514 est le code d'erreur PostgreSQL pour une violation de contrainte de vérification
+        // 23514 is the PostgreSQL error code for a check constraint violation
         reply.status(400).send({ error: "Invalid username" });
       } else if (error.code === "22P02") {
-        // 22P02 est le code d'erreur PostgreSQL pour une erreur de syntaxe dans les données
+        // 22P02 is the PostgreSQL error code for invalid input syntax
         reply.status(400).send({ error: "Invalid input syntax" });
       } else {
         reply.status(500).send({ error: "Failed to create user" });

@@ -37,7 +37,7 @@ const schema = {
 };
 
 const options = {
-  confKey: "config", // la configuration validée sera disponible sur app.config
+  confKey: "config", // the allow configuration will be available with app.config
   schema,
 };
 
