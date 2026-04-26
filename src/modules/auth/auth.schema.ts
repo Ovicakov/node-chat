@@ -9,8 +9,6 @@ const loginSchema = {
   },
 } as const;
 
-type LoginBody = FromSchema<typeof loginSchema>;
-
 const signupSchema = {
   type: "object",
   required: ["password", "username"],
@@ -20,6 +18,23 @@ const signupSchema = {
   },
 } as const;
 
+const refreshTokenSchema = {
+  type: "object",
+  required: ["refreshToken"],
+  properties: {
+    refreshToken: { type: "string" },
+  },
+} as const;
+
+type LoginBody = FromSchema<typeof loginSchema>;
+type RefreshTokenBody = FromSchema<typeof refreshTokenSchema>;
 type SignupBody = FromSchema<typeof signupSchema>;
 
-export { loginSchema, type LoginBody, type SignupBody, signupSchema };
+export {
+  type LoginBody,
+  type RefreshTokenBody,
+  type SignupBody,
+  loginSchema,
+  refreshTokenSchema,
+  signupSchema,
+};

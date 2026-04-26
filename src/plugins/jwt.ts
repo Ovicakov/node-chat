@@ -4,14 +4,14 @@ import fp from "fastify-plugin";
 
 declare module "@fastify/jwt" {
   interface FastifyJWT {
-    payload: { id: string; username: string };
-    user: { id: string; username: string };
+    payload: { id: string };
+    user: { id: string };
   }
 }
 
 /* 
   - @fastify/jwt defines request.user as unknown by default
-  - You say "no, in my project request.user is { id: string, username: string }"
+  - You say "no, in my project request.user is { id: string }"
   - TypeScript merges your declaration with the library's one
 */
 

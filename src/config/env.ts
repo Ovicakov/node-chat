@@ -9,6 +9,9 @@ declare module "fastify" {
       HOST: string;
       DATABASE_URL: string;
       JWT_SECRET: string;
+      JWT_SECRET_EXPIRATION: string;
+      REFRESH_TOKEN: string;
+      REFRESH_TOKEN_EXPIRATION: string;
     };
   }
 }
@@ -32,6 +35,18 @@ const schema = {
     JWT_SECRET: {
       type: "string",
       default: process.env.JWT_SECRET,
+    },
+    JWT_SECRET_EXPIRATION: {
+      type: "string",
+      default: process.env.JWT_SECRET_EXPIRATION,
+    },
+    REFRESH_TOKEN: {
+      type: "string",
+      default: process.env.REFRESH_TOKEN,
+    },
+    REFRESH_TOKEN_EXPIRATION: {
+      type: "string",
+      default: process.env.REFRESH_TOKEN_EXPIRATION,
     },
   },
 };
