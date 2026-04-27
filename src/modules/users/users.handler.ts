@@ -1,4 +1,5 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { type PostgresDb } from "@fastify/postgres";
 import type { UsersBody } from "./users.schema.ts";
 
 export default function usersHandler(app: FastifyInstance) {
@@ -6,10 +7,12 @@ export default function usersHandler(app: FastifyInstance) {
     request: FastifyRequest<{ Body: UsersBody }>,
     reply: FastifyReply,
   ) => {
-    const client = await app.pg.connect();
     const body = request.body;
+    let client: PostgresDb["pool"];
 
     try {
+      client = await app.pg.connect();
+
       const result = await client.query(
         "INSERT INTO users (username) VALUES ($1) RETURNING *",
         [body.username],
@@ -29,7 +32,7 @@ export default function usersHandler(app: FastifyInstance) {
         reply.status(500).send({ error: "Failed to create user" });
       }
     } finally {
-      client.release();
+      client?.release();
     }
   };
 }
