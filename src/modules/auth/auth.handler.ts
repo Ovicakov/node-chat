@@ -52,8 +52,6 @@ function loginHandler(app: FastifyInstance) {
       );
 
       reply.send({ token, refreshToken });
-    } catch {
-      reply.status(500).send({ error: "Error" });
     } finally {
       client.release();
     }
@@ -87,8 +85,8 @@ function refreshTokenHandler(app: FastifyInstance) {
 
       const accessToken = generateAccessToken(app, userId);
       reply.send({ accessToken });
-    } catch (error) {
-      reply.send({ error });
+    } finally {
+      client.release();
     }
   };
 }
@@ -109,8 +107,8 @@ function signupHandler(app: FastifyInstance) {
         [body.username, hash],
       );
       reply.status(201).send({ message: "User created" });
-    } catch (error) {
-      reply.send({ error });
+    } finally {
+      client.release();
     }
   };
 }
