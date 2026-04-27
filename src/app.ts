@@ -1,4 +1,8 @@
-import Fastify from "fastify";
+import Fastify, {
+  type FastifyError,
+  type FastifyRequest,
+  type FastifyReply,
+} from "fastify";
 // Plugins
 import envPlugin from "./config/env.js";
 import postgresPlugin from "./plugins/postgres.js";
@@ -36,5 +40,24 @@ app.register(usersRoute);
 app.register(messagesRoute);
 app.register(authRoute);
 app.register(chatRoute);
+
+// Works globally
+app.setErrorHandler(
+  (error: FastifyError, request: FastifyRequest, reply: FastifyReply) => {
+    const statusCode = error.statusCode;
+
+    if (!statusCode) return;
+
+    if (statusCode >= 500) {
+      request.log.error(error);
+    } else if (statusCode >= 400) {
+      request.log.info(error);
+    } else {
+      request.log.error(error);
+    }
+
+    reply.status(statusCode).send({ error: error.message });
+  },
+);
 
 export { app };
