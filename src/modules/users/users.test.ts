@@ -1,12 +1,8 @@
-import { describe, it, expect, vi, beforeAll } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 
 import { app } from "@src/app.ts";
 
 describe("Users", () => {
-  beforeAll(async () => {
-    await app.ready();
-  });
-
   it("should create a user when it not exists", async () => {
     vi.spyOn(app.pg, "connect").mockResolvedValue({
       query: vi.fn().mockResolvedValue({ rows: [{ username: "Zidane" }] }),
