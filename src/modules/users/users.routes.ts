@@ -1,4 +1,5 @@
 import { type FastifyInstance } from "fastify";
+
 import { usersSchema } from "./users.schema.ts";
 import usersHandler from "./users.handler.ts";
 

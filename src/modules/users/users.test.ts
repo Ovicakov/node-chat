@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeAll } from "vitest";
 
-import { app } from "../../app.ts";
+import { app } from "@src/app.ts";
 
 describe("Users", () => {
   beforeAll(async () => {

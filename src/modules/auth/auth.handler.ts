@@ -7,16 +7,19 @@ import {
   type SignupBody,
 } from "./auth.schema.ts";
 import { generateAccessToken } from "./auth.utils.ts";
+import type { PostgresDb } from "@fastify/postgres";
 
 function loginHandler(app: FastifyInstance) {
   return async (
     request: FastifyRequest<{ Body: LoginBody }>,
     reply: FastifyReply,
   ) => {
-    const client = await app.pg.connect();
+    let client: PostgresDb["pool"];
     const body = request.body;
 
     try {
+      client = await app.pg.connect();
+
       const result = await client.query(
         "SELECT * FROM users WHERE username=$1",
         [body.username],
@@ -63,10 +66,12 @@ function refreshTokenHandler(app: FastifyInstance) {
     request: FastifyRequest<{ Body: RefreshTokenBody }>,
     reply: FastifyReply,
   ) => {
-    const client = await app.pg.connect();
+    let client: PostgresDb["pool"];
     const { refreshToken } = request.body;
 
     try {
+      client = await app.pg.connect();
+
       const result = await client.query(
         "SELECT * FROM refresh_tokens WHERE refresh_token=$1",
         [refreshToken],
@@ -96,11 +101,13 @@ function signupHandler(app: FastifyInstance) {
     request: FastifyRequest<{ Body: SignupBody }>,
     reply: FastifyReply,
   ) => {
-    const client = await app.pg.connect();
+    let client: PostgresDb["pool"];
     const body = request.body;
     const saltRounds = 5; // 10-12 in production
 
     try {
+      client = await app.pg.connect();
+
       const hash = await bcrypt.hash(body.password, saltRounds);
       await client.query(
         "INSERT INTO users (username, password) VALUES ($1, $2)",

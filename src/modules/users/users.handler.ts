@@ -1,5 +1,7 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+
 import { type PostgresDb } from "@fastify/postgres";
+
 import type { UsersBody } from "./users.schema.ts";
 
 export default function usersHandler(app: FastifyInstance) {
@@ -7,8 +9,8 @@ export default function usersHandler(app: FastifyInstance) {
     request: FastifyRequest<{ Body: UsersBody }>,
     reply: FastifyReply,
   ) => {
-    const body = request.body;
     let client: PostgresDb["pool"];
+    const body = request.body;
 
     try {
       client = await app.pg.connect();
@@ -18,7 +20,9 @@ export default function usersHandler(app: FastifyInstance) {
         [body.username],
       );
       reply.status(201).send(result.rows[0]);
-    } catch (error: any) {
+    } catch (err) {
+      const error = err as { code: string };
+
       if (error.code === "23505") {
         // 23505 is the PostgreSQL error code for a unique constraint violation
         reply.status(409).send({ error: "Username already exists" });
