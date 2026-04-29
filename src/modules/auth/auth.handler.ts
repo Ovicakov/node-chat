@@ -1,13 +1,14 @@
 import bcrypt from "bcrypt";
 import type { FastifyRequest, FastifyReply, FastifyInstance } from "fastify";
 
+import type { PostgresDb } from "@fastify/postgres";
+
 import {
   type LoginBody,
   type RefreshTokenBody,
   type SignupBody,
 } from "./auth.schema.ts";
 import { generateAccessToken } from "./auth.utils.ts";
-import type { PostgresDb } from "@fastify/postgres";
 
 function loginHandler(app: FastifyInstance) {
   return async (
