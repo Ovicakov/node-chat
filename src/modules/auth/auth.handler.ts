@@ -85,7 +85,7 @@ function refreshTokenHandler(app: FastifyInstance) {
       const userId = result.rows[0].user_id;
       const isExpired = new Date() > new Date(result.rows[0].expiration_date);
 
-      if (!result || isExpired) {
+      if (isExpired) {
         return reply.status(403).send({ error: "Invalid refresh token" });
       }
 
