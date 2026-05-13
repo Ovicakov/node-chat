@@ -1,1 +1,0 @@
-{"version":3,"file":"messages.schema.js","sourceRoot":"","sources":["../../../src/modules/messages/messages.schema.ts"],"names":[],"mappings":"AAEA,MAAM,cAAc,GAAG;IACrB,IAAI,EAAE,QAAQ;IACd,QAAQ,EAAE,CAAC,SAAS,CAAC;IACrB,UAAU,EAAE;QACV,OAAO,EAAE,EAAE,IAAI,EAAE,QAAQ,EAAE;KAC5B;CACO,CAAC;AAIX,OAAO,EAAE,cAAc,EAAqB,CAAC"}
