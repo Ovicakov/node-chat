@@ -22,11 +22,11 @@ const schema = {
   properties: {
     PORT: {
       type: "number",
-      default: 3000,
+      default: process.env.PORT,
     },
     HOST: {
       type: "string",
-      default: "0.0.0.0",
+      default: process.env.HOST,
     },
     DATABASE_URL: {
       type: "string",
