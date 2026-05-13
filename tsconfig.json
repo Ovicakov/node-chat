@@ -42,7 +42,7 @@
     "skipLibCheck": true,
     "moduleResolution": "nodenext",
     "paths": {
-      "@*": ["./*"]
+      "@src/*": ["./src/*"]
     }
   },
   "exclude": ["migrations", "vitest.config.ts", "eslint.config.js", "dist"]
