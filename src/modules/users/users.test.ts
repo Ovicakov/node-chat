@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 
-import { app } from "@src/app.ts";
+import { app } from "@src/app.js";
 
 describe("Users", () => {
   it("should create a user when it not exists", async () => {

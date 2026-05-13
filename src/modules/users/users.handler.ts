@@ -2,7 +2,7 @@ import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 
 import { type PostgresDb } from "@fastify/postgres";
 
-import type { UsersBody } from "./users.schema.ts";
+import type { UsersBody } from "./users.schema.js";
 
 export default function usersHandler(app: FastifyInstance) {
   return async (

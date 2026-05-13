@@ -1,0 +1,1 @@
+{"version":3,"file":"authenticate.js","sourceRoot":"","sources":["../../src/hooks/authenticate.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,OAAO,CAAC,KAAK,UAAU,YAAY,CACxC,OAAuB,EACvB,KAAmB;IAEnB,IAAI,CAAC;QACH,MAAM,OAAO,CAAC,SAAS,EAAE,CAAC;IAC5B,CAAC;IAAC,OAAO,GAAG,EAAE,CAAC;QACb,KAAK,CAAC,IAAI,CAAC,GAAG,CAAC,CAAC;IAClB,CAAC;AACH,CAAC"}

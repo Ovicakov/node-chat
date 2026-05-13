@@ -1,0 +1,1 @@
+{"version":3,"file":"jwt.d.ts","sourceRoot":"","sources":["../../src/plugins/jwt.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,eAAe,EAAE,MAAM,SAAS,CAAC;AAG/C,OAAO,QAAQ,cAAc,CAAC;IAC5B,UAAU,UAAU;QAClB,OAAO,EAAE;YAAE,EAAE,EAAE,MAAM,CAAA;SAAE,CAAC;QACxB,IAAI,EAAE;YAAE,EAAE,EAAE,MAAM,CAAA;SAAE,CAAC;KACtB;CACF;8BAQ+C,eAAe;AAA/D,wBAEG"}

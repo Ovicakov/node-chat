@@ -7,8 +7,8 @@ import {
   type LoginBody,
   type RefreshTokenBody,
   type SignupBody,
-} from "./auth.schema.ts";
-import { generateAccessToken } from "./auth.utils.ts";
+} from "./auth.schema.js";
+import { generateAccessToken } from "./auth.utils.js";
 
 function loginHandler(app: FastifyInstance) {
   return async (

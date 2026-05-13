@@ -41,11 +41,9 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
     "moduleResolution": "nodenext",
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
     "paths": {
       "@*": ["./*"]
     }
   },
-  "exclude": ["migrations"]
+  "exclude": ["migrations", "vitest.config.ts", "eslint.config.js", "dist"]
 }

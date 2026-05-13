@@ -2,7 +2,7 @@ import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 
 import type { PostgresDb } from "@fastify/postgres";
 
-import type { MessagesBody } from "./messages.schema.ts";
+import type { MessagesBody } from "./messages.schema.js";
 
 function messagesGetHandler(app: FastifyInstance) {
   return async (request: FastifyRequest, reply: FastifyReply) => {

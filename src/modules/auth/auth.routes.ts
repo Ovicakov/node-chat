@@ -4,12 +4,12 @@ import {
   loginHandler,
   signupHandler,
   refreshTokenHandler,
-} from "./auth.handler.ts";
+} from "./auth.handler.js";
 import {
   loginSchema,
   refreshTokenSchema,
   signupSchema,
-} from "./auth.schema.ts";
+} from "./auth.schema.js";
 
 export default async function (app: FastifyInstance) {
   app.post("/login", { schema: { body: loginSchema } }, loginHandler(app));

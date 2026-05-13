@@ -1,9 +1,9 @@
 import type { FastifyInstance } from "fastify";
 
-import authenticate from "@src/hooks/authenticate.ts";
+import authenticate from "@src/hooks/authenticate.js";
 
-import { messagesSchema, type MessagesBody } from "./messages.schema.ts";
-import { messagesGetHandler, messagesPostHandler } from "./messages.handler.ts";
+import { messagesSchema, type MessagesBody } from "./messages.schema.js";
+import { messagesGetHandler, messagesPostHandler } from "./messages.handler.js";
 
 export default async function (app: FastifyInstance) {
   app.get("/messages", messagesGetHandler(app));

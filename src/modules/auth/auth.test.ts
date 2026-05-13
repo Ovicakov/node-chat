@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import bcrypt from "bcrypt";
 
-import { app } from "@src/app.ts";
+import { app } from "@src/app.js";
 
 const jwt = "azer-1234";
 const refreshToken = "mocked-uuid";

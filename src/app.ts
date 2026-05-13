@@ -6,14 +6,14 @@ import Fastify, {
 // Plugins
 import envPlugin from "./config/env.js";
 import postgresPlugin from "./plugins/postgres.js";
-import jwtPlugin from "./plugins/jwt.ts";
-import websocket from "./plugins/websocket.ts";
+import jwtPlugin from "./plugins/jwt.js";
+import websocket from "./plugins/websocket.js";
 // Routes
-import healthRoute from "./modules/health/health.routes.ts";
-import chatRoute from "./modules/chat/chat.routes.ts";
-import usersRoute from "./modules/users/users.routes.ts";
-import messagesRoute from "./modules/messages/messages.routes.ts";
-import authRoute from "./modules/auth/auth.routes.ts";
+import healthRoute from "./modules/health/health.routes.js";
+import chatRoute from "./modules/chat/chat.routes.js";
+import usersRoute from "./modules/users/users.routes.js";
+import messagesRoute from "./modules/messages/messages.routes.js";
+import authRoute from "./modules/auth/auth.routes.js";
 
 // Create a Fastify instance with logger enabled
 // Pino (the built-in logger) outputs JSON logs in production,
